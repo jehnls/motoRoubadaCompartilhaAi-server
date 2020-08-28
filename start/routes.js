@@ -16,9 +16,14 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+//Creating new users
 Route.post('/users', 'UserController.create')
 
-Route.post('/sessions', 'SessionController.create')
+//All routes the motocycles
+Route.resource('motorcycles', "MotorcycleController")
+  .apiOnly()
+  .middleware('auth')
+
 
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
