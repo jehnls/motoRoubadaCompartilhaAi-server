@@ -7,6 +7,12 @@ const Model = use('Model')
 const Hash = use('Hash')
 
 class User extends Model {
+
+  //Created relation 1-n, one user to many motorcycles
+  motorcycle() {
+    return this.hasMany('App/Models/motorcycle')
+  }
+
   static boot() {
     super.boot()
 
