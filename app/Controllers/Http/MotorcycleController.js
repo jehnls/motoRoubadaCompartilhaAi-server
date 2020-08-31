@@ -1,4 +1,5 @@
 'use strict'
+const Motorcycle = use('App/Models/Motorcycle')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -18,6 +19,10 @@ class MotorcycleController {
    * @param {View} ctx.view
    */
   async index({ request, response, view }) {
+
+    const motorcycles = Motorcycle.all()
+
+    return motorcycles
   }
 
 
