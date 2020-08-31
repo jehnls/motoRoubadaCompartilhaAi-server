@@ -19,6 +19,9 @@ const Route = use('Route')
 //Creating new users
 Route.post('/users', 'UserController.create')
 
+//Check session user
+Route.post('/sessions', 'SessionController.create')
+
 //All routes the motocycles
 Route.resource('motorcycles', "MotorcycleController")
   .apiOnly()
