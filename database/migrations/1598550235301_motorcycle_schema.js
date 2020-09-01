@@ -8,7 +8,7 @@ class MotorcycleSchema extends Schema {
     this.create('motorcycles', (table) => {
       table.increments()
       table
-        .interger('user_id')
+        .integer('user_id')
         .unsigned()
         .references('id')
         .inTable('users')
@@ -19,6 +19,9 @@ class MotorcycleSchema extends Schema {
       table.string('characteristic')
       table.string('description_theft')
       table.string('location_theft')
+      table.decimal('reward')
+      table.decimal('latitude', 9, 6)
+      table.decimal('longitude', 9, 6)
       table.timestamps()
     })
   }
