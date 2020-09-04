@@ -40,7 +40,22 @@ class MotorcycleController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store({ request, response }) {
+  async store({ auth, request, response }) {
+    const { id } = auth.user
+    const data = request.only([
+      'model',
+      'plate',
+      'characteristic',
+      'description_theft',
+      'location_theft',
+      'reward',
+      'latitude',
+      'longitude',
+    ])
+
+    const motorcycle = await Motorcycle.create({ ...data, user_id: id })
+
+    return motorcycle
   }
 
   /**
