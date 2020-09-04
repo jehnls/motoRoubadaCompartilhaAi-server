@@ -86,6 +86,24 @@ class MotorcycleController {
    * @param {Response} ctx.response
    */
   async update({ params, request, response }) {
+    const motorcycle = await Motorcycle.findOrFail(params.id)
+
+    const data = request.only([
+      'model',
+      'plate',
+      'characteristic',
+      'description_theft',
+      'location_theft',
+      'reward',
+      'latitude',
+      'longitude',
+    ])
+
+    motorcycle.merge(data)
+
+    await motorcycle.save()
+
+    return motorcycle
   }
 
   /**
