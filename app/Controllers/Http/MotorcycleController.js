@@ -19,9 +19,13 @@ class MotorcycleController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index({ request, response, view }) {
+  async index({ request }) {
+    //This scope is find the motorcycles next of 10 km
+    const { latitude, longitude } = request.all()
 
-    const motorcycles = Motorcycle.all()
+    const motorcycles = Motorcycle.query()
+      .nearBy(latitude, longitude, 10)
+      .fetch()
 
     return motorcycles
   }
