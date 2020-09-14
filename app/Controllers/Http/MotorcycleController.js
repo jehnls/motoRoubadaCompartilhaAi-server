@@ -24,6 +24,7 @@ class MotorcycleController {
     const { latitude, longitude } = request.all()
 
     const motorcycles = Motorcycle.query()
+      .with('images')
       .nearBy(latitude, longitude, 10)
       .fetch()
 
