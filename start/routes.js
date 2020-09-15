@@ -27,6 +27,10 @@ Route.resource('motorcycles', "MotorcycleController")
   .apiOnly()
   .middleware('auth')
 
+//Add new image   
+Route.post('motorcycles/:id/images', 'ImageController.store')
+  .middleware('auth')
+
 
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
