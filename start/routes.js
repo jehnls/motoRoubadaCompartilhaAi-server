@@ -31,6 +31,8 @@ Route.resource('motorcycles', "MotorcycleController")
 Route.post('motorcycles/:id/images', 'ImageController.store')
   .middleware('auth')
 
+// show address of image
+Route.get('images/:path', 'ImageConstroller.show')
 
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
